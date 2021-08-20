@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A simple routine planner.">
+    <title>Routines | Home</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏳</text></svg>">
+
+    <!-- Custom styles for this template -->
+    <link href="css/routines.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">⏳ Routines</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/routines.html">My Routines</a>
+                        </li>
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                        -->
+                    </ul>
+                    <div class="form-check form-switch ms-auto mt-3 me-3">
+                        <label class="form-check-label text-light ms-3" for="lightSwitch">🌜</label>
+                        <input class="form-check-input" type="checkbox" id="lightSwitch" />
+                    </div>
+                    <!--
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1 flex-shrink-1 container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <aside class="sidebar col-auto d-flex flex-column px-0 px-sm-2 bg-white border-end">
+
+                <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+                    <span class="fs-5 fw-semibold">All Habits</span>
+                </div>
+
+                <div id="habit-scroller-list" class="list-group list-group-flush border-bottom scrollarea">
+                    <template id="template-habit-list-item">
+                        <a class="list-group-item list-group-item-action px-1 px-sm-3" href="#{{uid}}">{{icon}}
+                            {{name}}</a>
+                    </template>
+                </div>
+
+            </aside>
+
+            <!-- ScrollSpy Content-->
+            <section class="habits col d-flex flex-column align-items-center position-relative overflow-scroll p-3"
+                data-bs-spy="scroll" data-bs-target="#habit-scroller-list" data-bs-offset="20" id="habit-scroller"
+                tabindex="0" style="height: calc(100vh - 60px - 4.5em);">
+                <template id="template-habit">
+                    <div class="habit-space w-100 vh-100" id="{{uid}}">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4 text-center">
+                                    <span class="activity-icon img-fluid rounded-start">{{icon}}</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{name}}</h5>
+                                        <p class="card-text">{{description}}</p>
+                                        <p class="card-text"><small class="text-muted">Estimated time: {{time}}
+                                                minutes</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <p class="float-end"><a href="#">Back to top</a></p>
+            <p class="text-muted">&copy; 2021 Rollcloud &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

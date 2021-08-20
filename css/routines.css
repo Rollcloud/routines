@@ -1,0 +1,17 @@
+body {
+  /* color: #5a5a5a; */
+  padding-top: 60px;
+}
+
+.habit-space {
+  padding: 50% 0;
+}
+
+.habits .card {
+  width: 100%;
+  max-width: 540px;
+}
+
+.activity-icon {
+  font-size: 7.5rem;
+}
