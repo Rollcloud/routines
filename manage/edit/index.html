@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A simple routine planner.">
-    <title>Routines | Home</title>
+    <title>Routines | Edit Routine</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,7 +16,7 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏳</text></svg>">
 
     <!-- Custom styles for this template -->
-    <link href="css/routines.css" rel="stylesheet">
+    <link href="/routines/css/routines.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -24,7 +24,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/routines">⏳ Routines</a>
+                <a class="navbar-brand" href="/">⏳ Routines</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,21 +32,16 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/routines">Home</a>
+                            <a class="nav-link" aria-current="page" href="/routines">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/routines/manage">My Routines</a>
                         </li>
-                        <!--
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link disabled active" href="#" tabindex="-1" aria-disabled="true">Edit
+                                Routine</a>
                         </li>
-                        -->
                     </ul>
-                    <div class="form-check form-switch ms-auto mt-3 me-3">
-                        <label class="form-check-label text-light ms-3" for="lightSwitch">🌜</label>
-                        <input class="form-check-input" type="checkbox" id="lightSwitch" />
-                    </div>
                     <!--
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -61,46 +56,50 @@
     <main class="flex-grow-1 flex-shrink-1 container-fluid">
         <div class="row">
 
-            <!-- Sidebar -->
-            <aside class="sidebar col-auto d-flex flex-column px-0 px-sm-2 bg-white border-end">
-
-                <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-                    <span class="fs-5 fw-semibold">All Habits</span>
-                </div>
-
-                <div id="habit-scroller-list" class="list-group list-group-flush border-bottom scrollarea">
-                </div>
-                <template id="template-habit-list-item">
-                    <a class="list-group-item list-group-item-action px-1 px-sm-3" href="#{{uid}}">
-                        {{icon}} &nbsp; {{name}}</a>
-                </template>
-
-            </aside>
-
             <!-- ScrollSpy Content-->
             <section class="habits col d-flex flex-column align-items-center position-relative overflow-scroll p-3"
-                data-bs-spy="scroll" data-bs-target="#habit-scroller-list" data-bs-offset="20" id="habit-scroller"
-                tabindex="0" style="height: calc(100vh - 60px - 4.5em);">
+                id="habit-scroller" tabindex="0" style="height: calc(100vh - 60px - 4.5em);">
                 <template id="template-habit">
-                    <div class="habit-space w-100 vh-100" id="{{uid}}">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4 text-center">
-                                    <span class="activity-icon img-fluid rounded-start">{{icon}}</span>
+                    <div class="card mb-3" id="{{uid}}">
+                        <div class="row g-0">
+                            <div class="col-3 p-2 text-center">
+                                <span class="activity-icon">{{icon}}</span>
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{name}}</h5>
+                                    <p class="card-text">{{description}}</p>
+                                    <p class="card-text"><small class="text-muted">Estimated time: {{time}}
+                                            minutes</small></p>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{name}}</h5>
-                                        <p class="card-text">{{description}}</p>
-                                        <p class="card-text"><small class="text-muted">Estimated time: {{time}}
-                                                minutes</small></p>
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="add-to-routine col-1 p-2 d-flex align-items-center justify-content-center"
+                                style="background-color: #e9ecef; cursor: pointer;">
+                                <span class="fs-3 text-muted" title="Add habit to routine">></span>
                             </div>
                         </div>
                     </div>
                 </template>
             </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar col-auto d-flex flex-column px-0 px-sm-2 bg-white border-start">
+
+                <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+                    <span id="routine-name" class="fs-5 fw-semibold"></span>
+                </div>
+
+                <div id="habit-list" class="list-group list-group-flush border-bottom scrollarea">
+                </div>
+                <template id="template-habit-list-item">
+                    <span class="list-group-item px-1 px-sm-3">
+                        {{icon}} &nbsp; {{name}} &nbsp;
+                        <button type="button"
+                            class="remove-from-routine btn btn-sm btn-outline-danger float-end px-1 py-0">X</button>
+                    </span>
+                </template>
+
+            </aside>
 
         </div>
     </main>
@@ -116,7 +115,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="/routines/js/edit-routine.js"></script>
 </body>
 
 </html>

@@ -38,12 +38,19 @@ async function getHabitByUid(habitUid, callback) {
   return await db.habits.where("uid").equals(habitUid).first(callback);
 }
 
-async function getRoutine(routineName, callback) {
-  return await db.routines.where("name").equals(routineName).first(callback);
+async function getRoutineByUid(routineName, callback) {
+  return await db.routines.where("uid").equals(routineName).first(callback);
 }
 
 async function getRoutines(callback) {
   return await db.routines.orderBy("name").toArray(callback);
 }
 
-export { addMissingHabits, addMissingRoutines, getHabits, getHabitByUid, getRoutine, getRoutines };
+export {
+  addMissingHabits,
+  addMissingRoutines,
+  getHabits,
+  getHabitByUid,
+  getRoutineByUid,
+  getRoutines,
+};
