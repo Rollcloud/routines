@@ -12,6 +12,33 @@ body {
   max-width: 540px;
 }
 
+/* On each card */
+.add-to-routine {
+  display: none;
+}
+.add-habits .add-to-routine {
+  display: initial;
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+.remove-from-routine {
+  display: none;
+}
+.remove-habits .remove-from-routine {
+  display: initial;
+}
+
+.reorder-in-routine {
+  display: none;
+}
+.reorder-habits .reorder-in-routine {
+  display: initial;
+}
+.reorder-habits .list-group-item:first-child .reorder-in-routine {
+  visibility: hidden;
+}
+
 .activity-icon {
   font-size: 7.5rem;
 }

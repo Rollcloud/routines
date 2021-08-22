@@ -1,7 +1,7 @@
 // A bank or pre-defined habits and routines
 
-import Habit from "./habit.js";
-import Routine from "./routine.js";
+import Habit from "./classes/habit.js";
+import Routine from "./classes/routine.js";
 
 const habits = {
   tidy_bedroom: new Habit("Put things in place", "🧺", "A tidy bedroom is a calm bedroom.", 5),

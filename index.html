@@ -63,43 +63,17 @@
 
             <!-- Sidebar -->
             <aside class="sidebar col-auto d-flex flex-column px-0 px-sm-2 bg-white border-end">
-
                 <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
                     <span class="fs-5 fw-semibold">All Habits</span>
                 </div>
-
-                <div id="habit-scroller-list" class="list-group list-group-flush border-bottom scrollarea">
-                </div>
-                <template id="template-habit-list-item">
-                    <a class="list-group-item list-group-item-action px-1 px-sm-3" href="#{{uid}}">
-                        {{icon}} &nbsp; {{name}}</a>
-                </template>
-
+                <div id="habit-scroller-list" class="list-group list-group-flush border-bottom scrollarea"></div>
             </aside>
 
             <!-- ScrollSpy Content-->
-            <section class="habits col d-flex flex-column align-items-center position-relative overflow-scroll p-3"
-                data-bs-spy="scroll" data-bs-target="#habit-scroller-list" data-bs-offset="20" id="habit-scroller"
-                tabindex="0" style="height: calc(100vh - 60px - 4.5em);">
-                <template id="template-habit">
-                    <div class="habit-space w-100 vh-100" id="{{uid}}">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4 text-center">
-                                    <span class="activity-icon img-fluid rounded-start">{{icon}}</span>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{name}}</h5>
-                                        <p class="card-text">{{description}}</p>
-                                        <p class="card-text"><small class="text-muted">Estimated time: {{time}}
-                                                minutes</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </template>
+            <section id="habit-scroller"
+                class="habits col d-flex flex-column align-items-center position-relative overflow-scroll p-3"
+                data-bs-spy="scroll" data-bs-target="#habit-scroller-list" data-bs-offset="20" tabindex="0"
+                style="height: calc(100vh - 60px - 4.5em);">
             </section>
 
         </div>

@@ -1,6 +1,6 @@
 import Dexie from "https://unpkg.com/dexie@3.0.3/dist/dexie.mjs";
-import Habit from "./habit.js";
-import Routine from "./routine.js";
+import Habit from "./classes/habit.js";
+import Routine from "./classes/routine.js";
 
 //
 // Declare Database

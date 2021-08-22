@@ -39,4 +39,18 @@ Number.prototype.toURL = function () {
   return result;
 };
 
+/**
+ * Move location of items in an array
+ * Source: https://stackoverflow.com/a/49874250
+ * @param {Number} from   The initial position
+ * @param {Number} to     The final position
+ * @param {Number} on     The number of items to move, default = 1
+ * @returns {Array}       The final array
+ */
+if (typeof Array.prototype.move === "undefined") {
+  Array.prototype.move = function (from, to, on = 1) {
+    return this.splice(to, 0, ...this.splice(from, on)), this;
+  };
+}
+
 export { stringToHTML, crc32 };

@@ -1,30 +1,18 @@
 "use strict";
 
-import Mustache from "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js";
 import * as db from "./db.js";
-import { stringToHTML } from "./utils.js";
 import { habits, routines } from "./provided.js";
+import { renderHabitListItems, renderHabitCards } from "./renderers.js";
 
-let habitListItemTemplate = document.getElementById("template-habit-list-item").innerHTML;
-let habitCardTemplate = document.getElementById("template-habit").innerHTML;
-
-function renderToScrollSpy(habit) {
-  // add content before links
-  document
-    .getElementById("habit-scroller")
-    .append(stringToHTML(Mustache.render(habitCardTemplate, habit)));
-  document
-    .getElementById("habit-scroller-list")
-    .append(stringToHTML(Mustache.render(habitListItemTemplate, habit)));
-}
+// Components
+const habitScrollerList = document.getElementById("habit-scroller-list");
+const habitScroller = document.getElementById("habit-scroller");
 
 function renderHabits(habits) {
-  habits.forEach((habit) => {
-    renderToScrollSpy(habit);
-  });
+  renderHabitListItems(habits, habitScrollerList);
+  renderHabitCards(habits, habitScroller);
   // refresh scroll spy
-  let scrollSpyContentEl = document.getElementById("habit-scroller");
-  bootstrap.ScrollSpy.getOrCreateInstance(scrollSpyContentEl).refresh();
+  bootstrap.ScrollSpy.getOrCreateInstance(habitScroller).refresh();
 }
 
 function main() {

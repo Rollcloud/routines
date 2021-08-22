@@ -1,4 +1,4 @@
-import { crc32 } from "./utils.js";
+import { crc32 } from "../utils.js";
 
 class Habit {
   constructor(name, icon, description, time) {

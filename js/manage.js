@@ -1,7 +1,7 @@
 "use strict";
 
 import Mustache from "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js";
-import Routine from "./routine.js";
+import Routine from "./classes/routine.js";
 import * as db from "./db.js";
 import { stringToHTML } from "./utils.js";
 
