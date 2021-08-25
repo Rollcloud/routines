@@ -41,6 +41,9 @@
                             <a class="nav-link disabled active" href="#" tabindex="-1" aria-disabled="true">Edit
                                 Routine</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/routines/habits">My Habits</a>
+                        </li>
                     </ul>
                     <!--
                     <form class="d-flex">
@@ -53,23 +56,25 @@
         </nav>
     </header>
 
-    <main class="flex-grow-1 flex-shrink-1 container-fluid">
-        <div class="row">
+    <main class="container-fluid">
+        <div class="row gx-5 px-2 h-100">
 
-            <!-- ScrollSpy Content-->
-            <section id="habit-scroller"
-                class="habits add-habits col d-flex flex-column align-items-center position-relative overflow-scroll p-3"
-                tabindex="0" style="height: calc(100vh - 60px - 4.5em);">
+            <!-- All habits-->
+            <section class=" col d-flex flex-column px-2 h-100 border-end">
+                <h4 class="text-center text-nowrap p-3 border-bottom">All Habits</h4>
+                <button type="button" class="create-new-habit btn btn-outline-primary btn-sm m-2">Create</button>
+                <div id="all-habits"
+                    class="habit-list delete-habits add-habits overflow-scroll list-group list-group-flush border-bottom">
+                </div>
             </section>
 
-            <!-- Sidebar -->
-            <aside
-                class="sidebar remove-habits reorder-habits col-auto d-flex flex-column px-0 px-sm-2 bg-white border-start">
-                <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-                    <span id="routine-name" class="fs-5 fw-semibold"></span>
+            <!-- Routine habits -->
+            <section class="col d-flex flex-column px-2 h-100 border-start">
+                <h4 id="routine-name" class="text-center text-nowrap p-3 border-bottom"></h4>
+                <div id="routine-habits"
+                    class="habit-list remove-habits reorder-habits overflow-scroll list-group list-group-flush border-bottom">
                 </div>
-                <div id="habit-list" class="list-group list-group-flush border-bottom scrollarea"></div>
-            </aside>
+            </section>
 
         </div>
     </main>
@@ -85,6 +90,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+    <script type="module" src="/routines/js/new-habit.js"></script>
     <script type="module" src="/routines/js/manage-edit.js"></script>
 </body>
 

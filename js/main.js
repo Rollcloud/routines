@@ -11,17 +11,15 @@ const habitScroller = document.getElementById("habit-scroller");
 function renderHabits(habits) {
   renderHabitListItems(habits, habitScrollerList);
   renderHabitCards(habits, habitScroller);
-  // refresh scroll spy
-  bootstrap.ScrollSpy.getOrCreateInstance(habitScroller).refresh();
 }
 
 function main() {
   // add missing habits to db
-  db.addMissingHabits(Object.values(habits)).catch((error) => {
+  db.addHabits(Object.values(habits)).catch((error) => {
     return; // Makes sure the promise is resolved, so the chain continues
   });
   // add missing routines to db
-  db.addMissingRoutines(routines).catch((error) => {
+  db.addRoutines(routines).catch((error) => {
     return; // Makes sure the promise is resolved, so the chain continues
   });
   // display all habits in db

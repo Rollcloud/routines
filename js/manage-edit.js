@@ -6,14 +6,14 @@ import {
   renderHabitListItems,
   removeIndexFromList,
   moveItemUpInList,
-  renderHabitCards,
+  deleteHabitFromList,
   addEventListener,
 } from "./renderers.js";
 
 // Components
-const habitListLabel = document.getElementById("routine-name");
-const habitScroller = document.getElementById("habit-scroller");
-const habitList = document.getElementById("habit-list");
+const routineName = document.getElementById("routine-name");
+const allHabitsList = document.getElementById("all-habits");
+const routineHabitsList = document.getElementById("routine-habits");
 
 // Variables
 var selectedRoutine;
@@ -21,38 +21,44 @@ var selectedRoutine;
 // Functions
 
 // Model
+function habitModel_deleteHabit(habitUid) {
+  db.deleteHabitByUid(habitUid);
+  deleteHabitFromList(habitUid, allHabitsList, true);
+}
+
+// Model
 function addHabitToRoutine(habit, routine) {
   routine.habits.push(habit);
   routine.save();
-  renderHabitListItems([habit], habitList);
+  renderHabitListItems([habit], routineHabitsList);
 }
 
 // Model
 function removeHabitFromRoutine(habitIdx, routine) {
   routine.habits.splice(habitIdx, 1);
   routine.save();
-  removeIndexFromList(habitIdx, habitList);
+  removeIndexFromList(habitIdx, routineHabitsList);
 }
 
 // Model
 function moveHabitUpInRoutine(habitIdx, routine) {
   routine.habits.move(habitIdx, habitIdx - 1);
   routine.save();
-  moveItemUpInList(habitIdx, habitList, true);
+  moveItemUpInList(habitIdx, routineHabitsList, true);
 }
 
 // Controller
 function loadRoutine(routineUid) {
   db.getRoutineByUid(routineUid).then((routine) => {
     selectedRoutine = routine;
-    habitListLabel.textContent = routine.name;
-    renderHabitListItems(routine.habits, habitList);
+    routineName.textContent = routine.name;
+    renderHabitListItems(routine.habits, routineHabitsList);
   });
 }
 
 // Controller
 function addHabit(target, event) {
-  const habitUid = target.parentNode.parentNode.id;
+  const habitUid = target.parentNode.dataset.uid;
   db.getHabitByUid(habitUid, function (habit) {
     addHabitToRoutine(habit, selectedRoutine);
   });
@@ -72,19 +78,26 @@ function moveUpHabit(target, event) {
   moveHabitUpInRoutine(habitIdx, selectedRoutine);
 }
 
+// Controller
+function habitController_deleteHabit(target, event) {
+  const habitUid = target.parentNode.dataset.uid;
+  habitModel_deleteHabit(habitUid);
+}
+
 // Page setup
 // get routine uid
 let routineUid = window.location.hash.substr(1);
 
 // Controller
-// load routine into sidebar
-loadRoutine(routineUid);
-// load all habits into scroller
+// load all habits
 db.getHabits().then((habits) => {
-  renderHabitCards(habits, habitScroller);
+  renderHabitListItems(habits, allHabitsList);
 });
+// load routine habits
+loadRoutine(routineUid);
 
 // Event listeners - Controller
 addEventListener("click", ".add-to-routine", addHabit);
 addEventListener("click", ".remove-from-routine", removeHabit);
 addEventListener("click", ".reorder-in-routine", moveUpHabit);
+addEventListener("click", ".delete-habit", habitController_deleteHabit);

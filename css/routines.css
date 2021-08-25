@@ -3,6 +3,10 @@ body {
   padding-top: 60px;
 }
 
+main {
+  height: calc(100vh - 60px - 4.5em);
+}
+
 .habit-space {
   padding: 50% 0;
 }
@@ -12,14 +16,39 @@ body {
   max-width: 540px;
 }
 
-/* On each card */
+.activity-icon {
+  font-size: 7.5rem;
+}
+
+.form-control.activity-icon {
+  font-size: 4em;
+}
+
+.form-control.activity-icon.is-invalid,
+.was-validated .form-control.activity-icon:valid,
+.was-validated .form-control.activity-icon:invalid {
+  padding-right: 0.75rem;
+  background-size: 0.29em;
+  background-position-x: 1.72em;
+}
+
+#new-existing-record-warnings {
+  animation: fade 1s 1;
+}
+
+.delete-habit {
+  display: none;
+}
+
+.delete-habits .delete-habit {
+  display: initial;
+}
+
 .add-to-routine {
   display: none;
 }
 .add-habits .add-to-routine {
   display: initial;
-  background-color: #e9ecef;
-  cursor: pointer;
 }
 
 .remove-from-routine {
@@ -37,8 +66,4 @@ body {
 }
 .reorder-habits .list-group-item:first-child .reorder-in-routine {
   visibility: hidden;
-}
-
-.activity-icon {
-  font-size: 7.5rem;
 }
