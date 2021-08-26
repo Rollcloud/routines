@@ -1,3 +1,7 @@
+import Mustache from "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js";
+
+import * as settings from "./settings.js";
+
 /**
  * Convert a template string into HTML DOM nodes
  * @param  {String} str The template string
@@ -53,4 +57,56 @@ if (typeof Array.prototype.move === "undefined") {
   };
 }
 
-export { stringToHTML, crc32 };
+/**
+ * Listen for an event from a future element
+ * @param  {String} eventType The event type
+ * @param  {String} element   The querystring for a future element
+ * @param  {Function} handle  The callback on event occurrence: passes `target`, `event`
+ */
+function addEventListener(eventType, element, handle) {
+  document.addEventListener(
+    eventType,
+    (event) => {
+      // loop parent nodes from the target to the delegation node
+      for (var target = event.target; target && target != this; target = target.parentNode) {
+        if (target.matches(element)) {
+          handle.call(this, target, event);
+          break;
+        }
+      }
+    },
+    false
+  );
+}
+
+/**
+ * Listen for a custom event from sendCustomEvent
+ * @param  {String} eventName The event name
+ * @param  {Function} handle  The callback on event occurrence: passes `detail`
+ */
+function addCustomListener(eventName, handle) {
+  document.addEventListener(eventName, (event) => {
+    handle.call(this, event.detail);
+  });
+}
+
+/**
+ * Send a custom event to an addCustomListener
+ * @param  {String} eventName The event name
+ * @param  {Object} detail    The data payload
+ */
+function sendCustomEvent(eventName, detail) {
+  const event = new CustomEvent(eventName, { detail: detail });
+  document.dispatchEvent(event);
+}
+
+async function retrieveTemplate(templateName) {
+  const response = await fetch(settings.root + "templates/" + templateName);
+  return await response.text();
+}
+
+function render(template, values) {
+  return stringToHTML(Mustache.render(template, values));
+}
+
+export { crc32, addEventListener, addCustomListener, sendCustomEvent, retrieveTemplate, render };

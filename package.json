@@ -1,0 +1,22 @@
+{
+  "name": "routines",
+  "version": "1.0.0",
+  "description": "Put your (good) habits in order",
+  "main": "serve.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-rollcloud:Rollcloud/routines.git"
+  },
+  "keywords": [
+    "routines",
+    "habits"
+  ],
+  "author": "rollcloud",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "browser-sync": "^2.27.5"
+  }
+}

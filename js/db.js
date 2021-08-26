@@ -1,7 +1,6 @@
 import Dexie from "https://unpkg.com/dexie@3.0.3/dist/dexie.mjs";
 import Habit from "./classes/habit.js";
 import Routine from "./classes/routine.js";
-import { habits } from "./provided.js";
 
 //
 // Declare Database
@@ -49,8 +48,8 @@ async function getRoutine(routineKey) {
   return await db.habits.get(routineKey);
 }
 
-async function getRoutineByUid(routineName, callback) {
-  return await db.routines.where("uid").equals(routineName).first(callback);
+async function getRoutineByUid(routineUid, callback) {
+  return await db.routines.where("uid").equals(routineUid).first(callback);
 }
 
 async function getRoutines(callback) {
