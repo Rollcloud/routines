@@ -59,7 +59,6 @@ async function getRoutines(callback) {
 async function deleteHabitByUid(habitUid) {
   return await getHabitByUid(habitUid)
     .then((habit) => {
-      console.log(habit.id);
       return habit.id;
     })
     .then((id) => {

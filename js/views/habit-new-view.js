@@ -67,6 +67,6 @@ document.querySelector(".create-new-habit").addEventListener("click", (event) =>
   showExistingRecordWarning(false);
   // display modal
   createHabitModal.show();
-});
 
-addEventListener("click", ".begin-creation", beginHabitCreation);
+  document.querySelector(".begin-creation").addEventListener("click", beginHabitCreation);
+});

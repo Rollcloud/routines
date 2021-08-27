@@ -1,6 +1,5 @@
 "use strict";
 
-import Routine from "../classes/routine.js";
 import * as RoutineController from "../controllers/routine-controller.js";
 import { addEventListener } from "../utils.js";
 
@@ -9,7 +8,10 @@ import { addEventListener } from "../utils.js";
 let urlHash = window.location.hash.substr(1);
 
 // load routine habits
-let routine = RoutineController.retrieveRoutine(urlHash);
+let routine;
+RoutineController.retrieveRoutine(urlHash).then((result) => {
+  routine = result;
+});
 
 // Event listener functions
 function addHabit(target) {
@@ -31,4 +33,3 @@ function moveUpHabit(target) {
 addEventListener("click", ".add-to-routine", addHabit);
 addEventListener("click", ".remove-from-routine", removeHabit);
 addEventListener("click", ".reorder-in-routine", moveUpHabit);
-// addEventListener("click", ".delete-habit", habitController_deleteHabit);

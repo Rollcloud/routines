@@ -4,8 +4,9 @@ import * as db from "../db.js";
 import { sendCustomEvent } from "../utils.js";
 
 function retrieveRoutine(routineUid) {
-  db.getRoutineByUid(routineUid).then((routine) => {
+  return db.getRoutineByUid(routineUid).then((routine) => {
     sendCustomEvent("routineRetrieved", { routine: routine });
+    return routine;
   });
 }
 

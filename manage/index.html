@@ -65,13 +65,12 @@
                 <p>Select existing routine to edit or create a new one</p>
                 <select id="routine-select" class="form-select form-select-lg mb-3 border-bottom"
                     aria-label=".form-select-lg">
-                    <option value="create-new" selected>Create new routine</option>
+                    <option value="" selected>Select an option</option>
+                    <option value="create-new">Create new routine</option>
                     <template id="template-routine-option">
                         <option value="{{uid}}">{{name}}</option>
                     </template>
                 </select>
-
-                <button class="btn btn-primary btn-lg mt-3" id="continue" type="button">Continue</button>
             </div>
         </div>
 

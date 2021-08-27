@@ -9,7 +9,6 @@ const routineOptionTemplate = document.getElementById("template-routine-option")
 
 // Components
 const routineSelect = document.getElementById("routine-select");
-const continueBtn = document.getElementById("continue");
 
 // View
 function renderRoutineOptions(routines) {
@@ -35,17 +34,16 @@ function createRoutine(name) {
   loadRoutineEditor(routine.uid);
 }
 
+function createRoutineDialog() {
+  const newName = prompt("Please enter routine name");
+  if (newName !== null) createRoutine(newName);
+}
+
 loadRoutines();
 
 // View
-// Submit button
-continueBtn.addEventListener("click", (event) => {
+routineSelect.addEventListener("change", (event) => {
   const selectedValue = routineSelect.value;
-  if (selectedValue == "create-new") {
-    const newName = prompt("Please enter routine name");
-    if (newName !== null) createRoutine(newName);
-  } else {
-    const routineUid = selectedValue;
-    loadRoutineEditor(routineUid);
-  }
+  if (selectedValue == "create-new") createRoutineDialog();
+  else loadRoutineEditor(selectedValue);
 });

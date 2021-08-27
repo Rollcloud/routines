@@ -63,17 +63,12 @@ if (typeof Array.prototype.move === "undefined") {
  * @param  {String} element   The querystring for a future element
  * @param  {Function} handle  The callback on event occurrence: passes `target`, `event`
  */
-function addEventListener(eventType, element, handle) {
+function addEventListener(eventType, selector, handle) {
   document.addEventListener(
     eventType,
     (event) => {
-      // loop parent nodes from the target to the delegation node
-      for (var target = event.target; target && target != this; target = target.parentNode) {
-        if (target.matches(element)) {
-          handle.call(this, target, event);
-          break;
-        }
-      }
+      let target = event.target;
+      if (target.closest(selector)) handle.call(this, target, event);
     },
     false
   );
