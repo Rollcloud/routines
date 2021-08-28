@@ -30,32 +30,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/routines">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/routines/manage">My Routines</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/routines/habits">My Habits</a>
-                        </li>
-                        <!--
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                        </li>
-                        -->
-                    </ul>
-                    <div class="form-check form-switch ms-auto mt-3 me-3">
-                        <label class="form-check-label text-light ms-3" for="lightSwitch">🌜</label>
-                        <input class="form-check-input" type="checkbox" id="lightSwitch" />
-                    </div>
-                    <!--
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    -->
+
+                    <template id="nav-link-template">
+                        <li class="nav-item"><a class="nav-link {{active}}" href="{{destination}}">{{title}}</a></li>
+                    </template>
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0"></ul>
+                    <script type="module" src="/routines/js/navigation.js"></script>
+
                 </div>
             </div>
         </nav>
@@ -84,7 +65,6 @@
 
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
             <p class="text-muted">&copy; 2021 Rollcloud &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
             </p>
         </div>

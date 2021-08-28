@@ -39,9 +39,10 @@ function deleteHabitFromList(habitUid, list, animate = true) {
 
 function deleteHabit(detail) {
   deleteHabitFromList(detail.uid, habitList);
+  deleteHabitFromList(detail.uid, habitCards);
 }
 
 addCustomListener("habitsRetrieved", renderHabits);
 addCustomListener("habitDeleted", deleteHabit);
 
-export { renderHabitListItems };
+export { renderHabitListItems, renderHabitCards };

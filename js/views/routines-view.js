@@ -19,7 +19,7 @@ function renderRoutineOptions(routines) {
 
 // View
 function loadRoutineEditor(routineUid) {
-  window.location += "edit#" + routineUid;
+  window.location += "routine#" + routineUid;
 }
 
 // Controller

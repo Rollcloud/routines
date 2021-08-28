@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A simple routine planner.">
-    <title>Routines | Home</title>
+    <title>Routines | Start</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,7 +16,7 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏳</text></svg>">
 
     <!-- Custom styles for this template -->
-    <link href="css/routines.css" rel="stylesheet">
+    <link href="/routines/css/routines.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -37,39 +37,27 @@
                     <ul class="navbar-nav me-auto mb-2 mb-md-0"></ul>
                     <script type="module" src="/routines/js/navigation.js"></script>
 
-                    <div class="form-check form-switch ms-auto mt-3 me-3">
-                        <label class="form-check-label text-light ms-3" for="lightSwitch">🌜</label>
-                        <input class="form-check-input" type="checkbox" id="lightSwitch" />
-                    </div>
-                    <!--
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    -->
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="flex-grow-1 flex-shrink-1 container-fluid">
-        <div class="row">
+    <main class="container mt-5">
 
-            <!-- Sidebar -->
-            <aside class="sidebar col-auto d-flex flex-column px-0 px-sm-2 bg-white border-end">
-                <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-                    <span class="fs-5 fw-semibold">All Habits</span>
-                </div>
-                <div id="all-habits-list" class="list-group list-group-flush border-bottom scrollarea"></div>
-            </aside>
-
-            <!-- Cards -->
-            <section id="habit-scroller"
-                class="habits col d-flex flex-column align-items-center position-relative overflow-scroll p-3"
-                style="height: calc(100vh - 60px - 4.5em);">
-            </section>
-
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5 text-center">
+                <h1 class="display-5 fw-bold">Select Routine</h1>
+                <p>Select a routine to begin</p>
+                <select id="routine-select" class="form-select form-select-lg mb-3 border-bottom"
+                    aria-label=".form-select-lg">
+                    <option value="" selected>Select a routine</option>
+                    <template id="template-routine-option">
+                        <option value="{{uid}}">{{name}}</option>
+                    </template>
+                </select>
+            </div>
         </div>
+
     </main>
 
     <footer class="footer mt-auto py-3 bg-light">
@@ -82,7 +70,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
-    <script type="module" src="js/pages/home.js"></script>
+    <script type="module" src="/routines/js/pages/start.js"></script>
 </body>
 
 </html>
