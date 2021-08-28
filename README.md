@@ -1,4 +1,4 @@
-# routines
+# ⏳ Routines
 
 Put your (good) habits in order
 
@@ -10,10 +10,21 @@ The app comprises of static, javascript-enabled pages and can be run from any we
 
 ### Dependencies
 
-- npm
-- [Browsersync](https://browsersync.io/)
+One of...
+
+- Python 3:
+
+  - http.server [built-in]
+
+- NPM:
+
+  - [Browsersync](https://browsersync.io/)
 
 ## Setup
+
+Choose one of the methods below.
+
+### 1. NPM
 
 From the root project folder, run:
 
@@ -22,4 +33,12 @@ From the root project folder, run:
     # start browser synchroniser
     ./node_modules/.bin/browser-sync start --server '../' --port 8080 --no-open --watch
 
-Then browse to `http://localhost:8080`
+Then browse to http://localhost:8080/routines
+
+### 2. Python
+
+From the root project folder, run:
+
+    ./serve.py
+
+Then browse to http://localhost:8080/routines
