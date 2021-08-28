@@ -62,6 +62,8 @@ function beginHabitCreation(event) {
 }
 
 document.querySelector(".create-new-habit").addEventListener("click", (event) => {
+  // clear form
+  habitForm.reset();
   // reset warnings
   habitForm.classList.remove("was-validated");
   showExistingRecordWarning(false);
