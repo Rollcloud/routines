@@ -1,10 +1,18 @@
 body {
-  /* color: #5a5a5a; */
-  padding-top: 60px;
+  color: #444;
+  padding-top: 56px;
 }
 
 main {
   height: calc(100vh - 60px - 4.5em);
+}
+
+footer .touch-icon {
+  font-size: 2em;
+}
+
+.offcanvas-bottom {
+  height: 50vh;
 }
 
 .habit-space {
