@@ -14,6 +14,18 @@ function stringToHTML(str) {
 }
 
 /**
+ * Perform a summation of an attribute from ab array of objects
+ * Source: https://stackoverflow.com/a/23249575
+ * @param {Array} items   An array of objects
+ * @returns {Number}      The summed result
+ */
+function sumAttr(items, prop) {
+  return items.reduce(function (a, b) {
+    return a + b[prop];
+  }, 0);
+}
+
+/**
  * Create a hash of the provided input using CRC-32
  * Source: https://stackoverflow.com/a/50579690
  * @param {*} r         The provided input
@@ -104,4 +116,12 @@ function render(template, values) {
   return stringToHTML(Mustache.render(template, values));
 }
 
-export { crc32, addEventListener, addCustomListener, sendCustomEvent, retrieveTemplate, render };
+export {
+  sumAttr,
+  crc32,
+  addEventListener,
+  addCustomListener,
+  sendCustomEvent,
+  retrieveTemplate,
+  render,
+};

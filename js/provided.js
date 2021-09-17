@@ -49,8 +49,8 @@ const habits = {
 };
 
 const routines = [
-  new Routine("Morning Routine", [habits.brush_teeth]),
-  new Routine("Evening Routine", [
+  new Routine("Morning Routine", "🌅", [habits.brush_teeth]),
+  new Routine("Evening Routine", "🎑", [
     habits.tidy_bedroom,
     habits.shower,
     habits.brush_teeth,

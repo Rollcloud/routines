@@ -11,7 +11,7 @@ const routineHabitsCards = document.getElementById("routine-habits-scroller");
 
 function renderRoutine(detail) {
   routineNames.forEach((routineName) => {
-    routineName.textContent = detail.routine.name;
+    routineName.textContent = `${detail.routine.icon} ${detail.routine.name}`;
   });
   routineHabitsLists.forEach((routineHabitsList) => {
     renderHabitListItems(detail.routine.habits, routineHabitsList);

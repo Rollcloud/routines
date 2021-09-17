@@ -46,15 +46,9 @@
 
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid py-5 text-center">
-                <h1 class="display-5 fw-bold">Select Routine</h1>
+                <h1 class="display-5 fw-bold">Start a Routine</h1>
                 <p>Select a routine to begin</p>
-                <select id="routine-select" class="form-select form-select-lg mb-3 border-bottom"
-                    aria-label=".form-select-lg">
-                    <option value="" selected>Select a routine</option>
-                    <template id="template-routine-option">
-                        <option value="{{uid}}">{{name}}</option>
-                    </template>
-                </select>
+                <div class="routine-cards d-flex flex-wrap justify-content-center"></div>
             </div>
         </div>
 
