@@ -15,7 +15,7 @@
 .carousel-item {
   height: 32rem;
 }
-.carousel-item > img {
+.carousel-item > svg {
   position: absolute;
   top: 0;
   left: 0;
