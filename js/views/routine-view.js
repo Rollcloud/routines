@@ -1,17 +1,45 @@
 "use strict";
 
+import Routine from "../classes/routine.js";
 import * as RoutineController from "../controllers/routine-controller.js";
 import { addEventListener } from "../utils.js";
 
 // Page setup
 // get routine uid
 let urlHash = window.location.hash.substr(1);
-
-// load routine habits
 let routine;
-RoutineController.retrieveRoutine(urlHash).then((result) => {
-  routine = result;
-});
+
+// View
+function reloadRoutine(routineUid) {
+  window.location += routineUid;
+  loadRoutine(routineUid);
+}
+
+// Controller
+function createRoutine(name, icon) {
+  const routine = new Routine(name.trim(), icon.trim(), []);
+  routine.save();
+  reloadRoutine(routine.uid);
+}
+
+function createRoutineDialog() {
+  const newName = prompt("Please enter routine name");
+  const newIcon = prompt("Please enter routine icon");
+  if (newName !== null && newIcon !== null) createRoutine(newName, newIcon);
+}
+
+function loadRoutine(urlHash) {
+  // load routine habits
+  RoutineController.retrieveRoutine(urlHash)
+    .then((result) => {
+      routine = result;
+    })
+    .catch((err) => {
+      createRoutineDialog();
+    });
+}
+
+loadRoutine(urlHash);
 
 // Event listener functions
 function addHabit(target) {

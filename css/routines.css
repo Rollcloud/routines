@@ -18,6 +18,10 @@ footer .touch-icon {
   height: 50vh;
 }
 
+.routine-cards .card {
+  width: 300px;
+}
+
 .habit-space {
   padding: 50% 0;
 }

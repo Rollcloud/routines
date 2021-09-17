@@ -49,7 +49,9 @@ async function getRoutine(routineKey) {
 }
 
 async function getRoutineByUid(routineUid, callback) {
-  return await db.routines.where("uid").equals(routineUid).first(callback);
+  const result = await db.routines.where("uid").equals(routineUid).first(callback);
+  if (result === undefined) throw `Routine not found for UID '${routineUid}'`;
+  else return result;
 }
 
 async function getRoutines(callback) {
