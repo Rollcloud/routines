@@ -11,10 +11,12 @@ const routineCards = document.querySelector(".routine-cards");
 function renderRoutineCards(routines, routineCards) {
   retrieveTemplate("routine-card.mustache").then((template) => {
     removeAllChildren(routineCards);
-    // add create-routine
-    routineCards.append(
-      render(template, { name: "New Routine", icon: "*️⃣", habits: [], time: "Unknown" })
-    );
+    if (routineCards.classList.contains("new-routine")) {
+      // add create-routine
+      routineCards.append(
+        render(template, { name: "New Routine", icon: "*️⃣", habits: [], time: "Unknown" })
+      );
+    }
     // add routines
     routines.forEach((routine) => {
       routineCards.append(render(template, routine));
