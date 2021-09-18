@@ -53,6 +53,16 @@ footer .touch-icon {
   animation: fade 1s 1;
 }
 
+.delete-routine {
+  display: none;
+  /* show button over stretched link */
+  position: relative;
+  z-index: 1;
+}
+.delete-routines .card:not([data-uid="new"]) .delete-routine {
+  display: initial;
+}
+
 .delete-habit {
   display: none;
 }

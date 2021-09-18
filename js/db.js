@@ -68,8 +68,14 @@ async function deleteHabitByUid(habitUid) {
     });
 }
 
-async function deleteRoutineByUid(routineUid, callback) {
-  return await db.routines.delete(routineUid);
+async function deleteRoutineByUid(routineUid) {
+  return await getRoutineByUid(routineUid)
+    .then((routine) => {
+      return routine.id;
+    })
+    .then((id) => {
+      return db.routines.delete(id);
+    });
 }
 
 export {
