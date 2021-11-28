@@ -3,13 +3,6 @@ body {
   padding-top: 56px;
 }
 
-main {
-  height: calc(100vh - 56px - 4.5em);
-}
-.home main {
-  height: unset;
-}
-
 footer .touch-icon {
   font-size: 2em;
 }
