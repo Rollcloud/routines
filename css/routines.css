@@ -64,6 +64,14 @@ footer .touch-icon {
   display: initial;
 }
 
+.edit-habit {
+  display: none;
+}
+
+.edit-habits .edit-habit {
+  display: initial;
+}
+
 .add-to-routine {
   display: none;
 }
