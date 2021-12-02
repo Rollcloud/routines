@@ -32,8 +32,17 @@ function renderHabits(details) {
   if (habitCards) renderHabitCards(details.habits, habitCards);
 }
 
+function replaceHabit(detail) {
+  const oldHabitCard = habitCards.querySelector(`[data-uid=${detail.habit.uid}]`);
+  retrieveTemplate("habit-card.mustache").then((template) => {
+    const newHabitCard = render(template, detail.habit);
+    habitCards.replaceChild(newHabitCard, oldHabitCard);
+  });
+}
+
 function deleteHabitFromList(habitUid, list, animate = true) {
   const listItem = list.querySelector(`[data-uid=${habitUid}]`);
+  console.log(listItem, list, animate);
   deleteElementInList(listItem, animate);
 }
 
@@ -43,6 +52,7 @@ function deleteHabit(detail) {
 }
 
 addCustomListener("habitsRetrieved", renderHabits);
+addCustomListener("habitEdited", replaceHabit);
 addCustomListener("habitDeleted", deleteHabit);
 
 export { renderHabitListItems, renderHabitCards };
